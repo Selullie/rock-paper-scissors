@@ -40,37 +40,23 @@ function playRound (playerSelection, computerSelection) {
     return winner;
 }
 
-function playGame() {
-    const rounds = 5;
-    let playerScore = 0;
-    let computerScore = 0;
-    let playerSelection = "Rock";
-    let computerSelection = getComputerChoice();
-    let roundWinner = 1;
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
 
-    for (let i = 0; i < rounds; i++) {
-        computerSelection = getComputerChoice();
-        playerSelection = prompt("Rock, paper or scissors?");
+rockBtn.addEventListener("click", function (e) {
+  let computerSelection = getComputerChoice();
+  playRound("rock", computerSelection);
+});
 
-        if (roundWinner === 0) {
-            console.log("This round is a tie! Computer picked " + computerSelection + ". No one wins.");
-        } else if (roundWinner === 2) {
-            console.log("You lose this round! Computer picked " + computerSelection + ".");
-            computerScore++;
-        } else {
-            console.log("You win this round! Computer picked " + computerSelection + ".");
-            playerScore++;
-        }
-    }
+paperBtn.addEventListener("click", function (e) {
+  let computerSelection = getComputerChoice();
+  playRound("paper", computerSelection);
+});
 
-    if (computerScore === playerScore) {
-        console.log("This game was a tie!");
-    } else if (computerScore > playerScore) {
-        console.log("You lose! The computer won!");
-    } else {
-        console.log("You win! The computer loses!");
-    }
-}
+scissorsBtn.addEventListener("click", function (e) {
+  let computerSelection = getComputerChoice();
+  playRound("scissors", computerSelection);
+});
 
 const choices = ["rock", "paper", "scissors"]
-playGame();
